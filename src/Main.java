@@ -1,5 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        BankAccount swed = new BankAccount(153.23);
+        BankAccount seb = new BankAccount(34.11);
+
+        swed.printBalance();
+        swed.transfer(seb, 31);
+        swed.printBalance();
+
     }
 }
