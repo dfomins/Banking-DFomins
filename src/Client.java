@@ -1,17 +1,14 @@
-import java.util.Map;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Client {
 
     private String name;
     private String surname;
-    private String personalCode;
-    public Map<Integer, BankAccount> bankAccounts = new HashMap<>();
+    public ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
     public Client(String name, String surname, String personalCode) {
         this.name = name;
         this.surname = surname;
-        this.personalCode = personalCode;
     }
 
     public String getName() {
@@ -23,11 +20,13 @@ public class Client {
     }
 
     public void createBankAccount(int accountNumber, double amount) {
-        bankAccounts.put(accountNumber, new BankAccount(accountNumber, amount));
+        bankAccounts.add(new BankAccount(accountNumber, amount));
     }
 
-    public void getBankAccountInfo(int accountNumber) {
-        bankAccounts.get(accountNumber).printBalance();
+    public void getListOfBankAccounts() {
+        for (int i = 0; i < bankAccounts.size(); i++) {
+            System.out.println(i + ") " + bankAccounts.get(i).accountNumber);
+        }
     }
 
 }
