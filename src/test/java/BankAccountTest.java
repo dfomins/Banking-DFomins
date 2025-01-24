@@ -74,7 +74,7 @@ class BankAccountTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Check if balance is correct after withdraw")
+    @DisplayName("Check if transfer results are correct")
     @CsvSource({
             "2362,4563,62.63,45.22,98.68",
             "3893,1767,805.39,56,69.28",
