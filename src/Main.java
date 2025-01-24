@@ -6,17 +6,18 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
+        // Clients list
         ArrayList<Client> clients = new ArrayList<>(2);
         clients.add(new Client("Janis", "Petrovs", "201100-53412"));
         clients.add(new Client("Youriy", "Koudrin", "123456-12345"));
 
+        // Prints out users list
         System.out.println("Users list:");
         for (int i = 0; i < clients.size(); i++) {
             System.out.println(i + ") " + clients.get(i).getName() + " " + clients.get(i).getSurame());
         }
 
-        System.out.println();
-        System.out.print("Select an user: ");
+        System.out.print("\nSelect user: ");
         int selectedClientIndex = sc.nextInt();
         System.out.println();
 
@@ -42,7 +43,7 @@ public class Main {
                 int option = sc.nextInt();
 
                 switch (option) {
-                    case 1:
+                    case 1 -> {
                         System.out.print("Enter new account number: ");
                         int accountNumber = sc.nextInt();
                         System.out.print("Money amount: ");
@@ -51,14 +52,14 @@ public class Main {
                         selectedClient.createBankAccount(accountNumber, amount);
 
                         System.out.println();
-                        break;
+                    }
 
-                    case 2:
+                    case 2 -> {
                         selectedClient.getListOfBankAccounts();
                         System.out.println();
-                        break;
+                    }
 
-                    case 3:
+                    case 3 -> {
                         for (int i = 0; i < selectedClient.bankAccounts.size(); i++) {
                             System.out.println(i + ") " + selectedClient.bankAccounts.get(i).accountNumber);
                         }
@@ -79,32 +80,32 @@ public class Main {
                                 option = sc.nextInt();
 
                                 switch (option) {
-                                    case 1:
+                                    case 1 -> {
                                         selectedAccount.printBalance();
                                         System.out.println();
-                                        break;
+                                    }
 
-                                    case 2:
+                                    case 2 -> {
                                         System.out.print("Enter amount you want to deposit: ");
-                                        amount = sc.nextDouble();
+                                        double amount = sc.nextDouble();
                                         selectedAccount.deposit(amount);
                                         System.out.println();
-                                        break;
+                                    }
 
-                                    case 3:
+                                    case 3 -> {
                                         System.out.print("Enter amount you want to withdraw: ");
-                                        amount = sc.nextDouble();
+                                        double amount = sc.nextDouble();
                                         selectedAccount.withdraw(amount);
-                                        break;
+                                    }
 
-                                    case 4:
+                                    case 4 -> {
                                         System.out.println("\nSelect account to which you want to transfer:\n");
                                         selectedClient.getListOfBankAccounts();
                                         System.out.print("\nOption: ");
                                         int accountToTransferIndex = sc.nextInt();
 
                                         System.out.print("Enter amount you want to transfer: ");
-                                        amount = sc.nextDouble();
+                                        double amount = sc.nextDouble();
 
                                         if (accountToTransferIndex >= 0 && accountToTransferIndex < selectedClient.bankAccounts.size()) {
 
@@ -116,10 +117,9 @@ public class Main {
                                             System.out.println("Incorrect account index!");
 
                                         }
-                                        break;
+                                    }
 
-                                    case 0:
-                                        exit = true; break;
+                                    case 0 -> exit = true;
 
                                 }
 
@@ -130,10 +130,9 @@ public class Main {
                         }
 
                         exit = false;
-                        break;
+                    }
 
-                    case 0:
-                        exit = true;break;
+                    case 0 -> exit = true;
                 }
 
             } while (!exit);
