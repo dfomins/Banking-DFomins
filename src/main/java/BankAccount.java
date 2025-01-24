@@ -12,21 +12,23 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public void deposit(double amount) {
-        balance += amount;
+    public double deposit(double amount) {
+        return balance += amount;
     }
 
-    public void withdraw(double amount) {
+    public double withdraw(double amount) {
         if (balance >= amount) {
-            balance -= amount;
-        } else {
-            System.out.println("Not enough money!");
+            return balance -= amount;
         }
+        System.out.println("Not enough money!");
+        return balance;
     }
 
     public void printBalance() {
         System.out.println("Your balance: " + balance);
     }
+
+    public double getBalance() { return balance; }
 
     public void transfer(BankAccount to, double amount) {
         if (balance >= amount) {
