@@ -4,7 +4,7 @@ public class Client {
 
     private String name;
     private String surname;
-    public ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+    private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
     public Client(String name, String surname, String personalCode) {
         this.name = name;
@@ -17,6 +17,10 @@ public class Client {
 
     public String getSurame() {
         return surname;
+    }
+
+    public ArrayList<BankAccount> getBankAccounts() {
+        return bankAccounts;
     }
 
     public void createBankAccount(int accountNumber, double amount) {

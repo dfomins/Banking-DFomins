@@ -11,7 +11,7 @@ public class Main {
         clients.add(new Client("Janis", "Petrovs", "201100-53412"));
         clients.add(new Client("Youriy", "Koudrin", "123456-12345"));
 
-        // Prints out users list
+        // Prints out clients list
         System.out.println("Users list:");
         for (int i = 0; i < clients.size(); i++) {
             System.out.println(i + ") " + clients.get(i).getName() + " " + clients.get(i).getSurame());
@@ -30,7 +30,7 @@ public class Main {
                 System.out.println("Select an option:");
                 System.out.println("1) Create an account");
 
-                if (selectedClient.bankAccounts.size() > 0) {
+                if (selectedClient.getBankAccounts().size() > 0) {
                     System.out.println("2) List of my accounts");
                     System.out.println("3) Select an account to work with");
                 }
@@ -60,16 +60,16 @@ public class Main {
                     }
 
                     case 3 -> {
-                        for (int i = 0; i < selectedClient.bankAccounts.size(); i++) {
-                            System.out.println(i + ") " + selectedClient.bankAccounts.get(i).accountNumber);
+                        for (int i = 0; i < selectedClient.getBankAccounts().size(); i++) {
+                            System.out.println(i + ") " + selectedClient.getBankAccounts().get(i).accountNumber);
                         }
                         System.out.print("\nSelect: ");
                         int selectedAccountIndex = sc.nextInt();
                         System.out.println();
 
-                        if (selectedAccountIndex >= 0 && selectedAccountIndex < selectedClient.bankAccounts.size()) {
+                        if (selectedAccountIndex >= 0 && selectedAccountIndex < selectedClient.getBankAccounts().size()) {
 
-                            BankAccount selectedAccount = selectedClient.bankAccounts.get(selectedAccountIndex);
+                            BankAccount selectedAccount = selectedClient.getBankAccounts().get(selectedAccountIndex);
                             do {
                                 System.out.println("1) Print balance");
                                 System.out.println("2) Deposit");

@@ -28,7 +28,6 @@ public class BankAccount {
         System.out.println("Your balance: " + balance);
     }
 
-    public double getBalance() { return balance; }
 
     public void transfer(BankAccount to, double amount) {
         if (balance >= amount) {
