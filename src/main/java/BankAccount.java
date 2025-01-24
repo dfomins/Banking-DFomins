@@ -28,14 +28,15 @@ public class BankAccount {
         System.out.println("Your balance: " + balance);
     }
 
+    public double getBalance() { return balance; }
 
-    public void transfer(BankAccount to, double amount) {
+    public double transfer(BankAccount to, double amount) {
         if (balance >= amount) {
-            balance -= amount;
             to.balance += amount;
-        } else {
-            System.out.println("Not enough money to transfer!");
+            return balance -= amount;
         }
+        System.out.println("Not enough money to transfer!");
+        return balance;
     }
 
 }

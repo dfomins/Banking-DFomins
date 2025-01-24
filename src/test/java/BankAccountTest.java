@@ -72,5 +72,37 @@ class BankAccountTest {
 
         assertEquals(expected, testAccount.withdraw(amount));
     }
-    
+
+    @ParameterizedTest
+    @DisplayName("Check if balance is correct after withdraw")
+    @CsvSource({
+            "2362,4563,62.63,45.22,98.68",
+            "3893,1767,805.39,56,69.28",
+            "7172,6849,542.54,67.22,10.31",
+            "8348,6932,875.4,10.22,90.9",
+            "3330,7849,951.58,67.21,54.6"
+    })
+
+    void transfer(int fromAccountNumber, int toAccountNumber, double initialBalanceFrom, double initialBalanceTo, double amount) {
+
+        // The account from which we're transferring the money
+        BankAccount from = new BankAccount(fromAccountNumber, initialBalanceFrom);
+
+        // Account which receives money
+        BankAccount to = new BankAccount(toAccountNumber, initialBalanceTo);
+
+        // Expected value that transferring account gets
+        Object expectedTo = (initialBalanceFrom - amount > 0)
+                ? initialBalanceFrom - amount
+                : initialBalanceFrom;
+
+        // Expected value that receiving account gets
+        // If transferring account has not enough money, then receiving accounts balance stays the same
+        Object expectedFrom = (initialBalanceFrom - amount > 0)
+                ? initialBalanceTo + amount
+                : initialBalanceTo;
+
+        assertAll(() -> assertEquals(expectedTo, from.transfer(to, amount)),
+                () -> assertEquals(expectedFrom, to.getBalance()));
+    }
 }

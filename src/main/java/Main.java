@@ -107,9 +107,9 @@ public class Main {
                                         System.out.print("Enter amount you want to transfer: ");
                                         double amount = sc.nextDouble();
 
-                                        if (accountToTransferIndex >= 0 && accountToTransferIndex < selectedClient.bankAccounts.size()) {
+                                        if (accountToTransferIndex >= 0 && accountToTransferIndex < selectedClient.getBankAccounts().size()) {
 
-                                            BankAccount accountToTransfer = selectedClient.bankAccounts.get(accountToTransferIndex);
+                                            BankAccount accountToTransfer = selectedClient.getBankAccounts().get(accountToTransferIndex);
                                             selectedAccount.transfer(accountToTransfer, amount);
 
                                         } else {
